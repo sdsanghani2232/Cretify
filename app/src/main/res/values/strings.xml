@@ -14,4 +14,6 @@
     <string name="use">USE</string>
     <string name="event_name">Enter Event Name</string>
     <string name="check">Check</string>
+    <string name="pdf">PDF</string>
+    <string name="name">Name</string>
 </resources>

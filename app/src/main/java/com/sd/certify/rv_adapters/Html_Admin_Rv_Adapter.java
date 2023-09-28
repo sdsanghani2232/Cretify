@@ -1,4 +1,4 @@
-package com.sd.certify.rc_adapters;
+package com.sd.certify.rv_adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

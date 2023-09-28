@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sd.certify.R;
 import com.sd.certify.database_files_viewmodels.Html_Data;
-import com.sd.certify.rc_adapters.Html_Admin_Rv_Adapter;
+import com.sd.certify.rv_adapters.Html_Admin_Rv_Adapter;
 
 
 public class Admin_Home_fragment extends Fragment {

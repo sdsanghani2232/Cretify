@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
 import android.webkit.WebView;
+
 import com.sd.certify.data_class.FilesDetails;
 import com.sd.certify.data_class.UserDetails;
 import com.sd.certify.database_files_viewmodels.Excel_Pdf_Upload;
@@ -13,6 +14,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -22,12 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Csv {
-
     Context context;
     WebView webView;
     View view;
     Workbook workbook;
-    List<String> rowDataOfCav;
+    List<String> rowdataOfCav;
     int currentIndex = 0,row = 1,height,width;
     List<List<String>> dataOfCsv;
     Sheet sheet;
@@ -55,12 +56,12 @@ public class Csv {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\,");
-                rowDataOfCav = new ArrayList<>();
+                rowdataOfCav = new ArrayList<>();
 
                 for (String part : parts)
-                    rowDataOfCav.add(part.trim());
+                    rowdataOfCav.add(part.trim());
 
-                dataOfCsv.add(rowDataOfCav);
+                dataOfCsv.add(rowdataOfCav);
             }
             CreateNewExcel();
             timeDelay();
@@ -105,10 +106,13 @@ public class Csv {
     private void setWebView() {
 
         webView.loadData(changeCode,"text/html","UTF-8");
-        webView.postDelayed(() -> {
-            width = webView.getMeasuredWidth();
-            height = webView.getMeasuredHeight();
-            PdfCreate();
+        webView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                width = webView.getMeasuredWidth();
+                height = webView.getMeasuredHeight();
+                PdfCreate();
+            }
         }, 400);
     }
 
@@ -128,7 +132,12 @@ public class Csv {
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             pd.writeTo(outputStream);
-            new Excel_Pdf_Upload().uploadPdf(outputStream.toByteArray(), certificateName, filesDetails.getEventName(), userEmil, this::addInExcel);
+            new Excel_Pdf_Upload().uploadPdf(outputStream.toByteArray(), certificateName, filesDetails.getEventName(), userEmil,new Excel_Pdf_Upload.OnPdfUploadListener() {
+                @Override
+                public void onUploadSuccess() {
+                    addInExcel();
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -156,9 +165,12 @@ public class Csv {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        new Handler().postDelayed(() -> {
-            currentIndex++;
-            timeDelay();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                currentIndex++;
+                timeDelay();
+            }
         },400);
     }
 

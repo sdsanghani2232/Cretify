@@ -52,7 +52,6 @@ public class Excel {
         try {
 
             InputStream inputStream = context.getContentResolver().openInputStream(uri);
-            assert inputStream != null;
             workbook = new XSSFWorkbook(inputStream);
             sheet = workbook.getSheetAt(0);
             dataOfExcel = new ArrayList<>();
@@ -62,10 +61,10 @@ public class Excel {
                 List<String> rowData = new ArrayList<>();
                 for (Cell cell : row)
                 {
-                    String cellData = cell.getStringCellValue();
-                    if(!cellData.isEmpty())
+                    String celldata = cell.getStringCellValue();
+                    if(!celldata.isEmpty())
                     {
-                        rowData.add(cellData);
+                        rowData.add(celldata);
                         isRowEmpty = false;
                     }
                 }
@@ -80,6 +79,7 @@ public class Excel {
     }
 
     private void timeDelay() {
+//        Log.d("code files","3");
         if(currentIndex < dataOfExcel.size())
         {
             List<String> row = dataOfExcel.get(currentIndex);
@@ -106,10 +106,13 @@ public class Excel {
     private void setWebView() {
 
         webView.loadData(changeCode,"text/html","UTF-8");
-        webView.postDelayed(() -> {
-            width = webView.getMeasuredWidth();
-            height = webView.getMeasuredHeight();
-            PdfCreate();
+        webView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                width = webView.getMeasuredWidth();
+                height = webView.getMeasuredHeight();
+                PdfCreate();
+            }
         }, 400);
     }
 
@@ -129,7 +132,12 @@ public class Excel {
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             pd.writeTo(outputStream);
-            new Excel_Pdf_Upload().uploadPdf(outputStream.toByteArray(), certificateName, filesDetails.getEventName(),userEmil, this::addInExcel);
+            new Excel_Pdf_Upload().uploadPdf(outputStream.toByteArray(), certificateName, filesDetails.getEventName(),userEmil,new Excel_Pdf_Upload.OnPdfUploadListener() {
+                @Override
+                public void onUploadSuccess() {
+                    addInExcel();
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -159,9 +167,12 @@ public class Excel {
         }
 
 
-        new Handler().postDelayed(() -> {
-            currentIndex++;
-            timeDelay();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                currentIndex++;
+                timeDelay();
+            }
         },400);
     }
 
