@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.fragments.Admin_Home_fragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/html_review"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_files"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#DF5AFF4E"
+        android:contentDescription="@string/add_data_file"
+        android:src="@drawable/baseline_insert_drive_file_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/info_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="170dp"
+        android:backgroundTint="#DF5AFF4E"
+        android:contentDescription="@string/information"
+        android:src="@drawable/baseline_info_24" />
+
+
+</FrameLayout>

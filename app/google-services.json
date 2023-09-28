@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "118000625717",
+    "project_id": "certify-a82d0",
+    "storage_bucket": "certify-a82d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118000625717:android:82d0926cdbbde793d1a97c",
+        "android_client_info": {
+          "package_name": "com.sd.certify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118000625717-452opdselkd95lceoe2iu5mvbtpr86fq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sd.certify",
+            "certificate_hash": "555659d42d2e0a7c86d686910886e1f594510a31"
+          }
+        },
+        {
+          "client_id": "118000625717-fqatfq7iu5memeb804f08296ng3c0o8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC24XtE0t7fEz63cgvExqFGD-FsamhxSFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118000625717-fqatfq7iu5memeb804f08296ng3c0o8e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
