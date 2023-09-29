@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -26,7 +28,6 @@ public class SigninActivity extends AppCompatActivity {
     GoogleSignInOptions options;
     GoogleSignInClient client;
     FirebaseAuth auth;
-    Intent intent;
     ImageView logo;
     ProgressBar progressBar;
     FirebaseUser currentUser;
@@ -58,7 +59,8 @@ public class SigninActivity extends AppCompatActivity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail().build();
 
-        client = GoogleSignIn.getClient(this,options);
+        client = GoogleSignIn.getClient(getApplicationContext(),options);
+
         signIn.setOnClickListener(view -> {
 
             if(!CheckInternet())
@@ -67,7 +69,8 @@ public class SigninActivity extends AppCompatActivity {
             }
             else
             {
-                intent = client.getSignInIntent();
+                Intent intent = client.getSignInIntent();
+                Log.d("login data ",Uri.parse(String.valueOf(intent.getData())).toString());
                 startActivityForResult(intent,GOOGLE_SIGN_IN_REQUEST_CODE);
             }
 
@@ -78,8 +81,13 @@ public class SigninActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.d("login data ","done1");
+        Log.d("login data ", Uri.parse(String.valueOf(data.getData())).toString());
+
         if(requestCode == GOOGLE_SIGN_IN_REQUEST_CODE && data != null && resultCode == RESULT_OK)
         {
+            Log.d("login data ","done");
+
             new CheckUser(getApplicationContext()).AuthenticateEmile(data);
             progressBar.setVisibility(View.VISIBLE);
             signIn.setVisibility(View.GONE);
@@ -101,6 +109,5 @@ public class SigninActivity extends AppCompatActivity {
         ConnectivityManager manager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
         return info != null && info.isConnected();
-
     }
 }

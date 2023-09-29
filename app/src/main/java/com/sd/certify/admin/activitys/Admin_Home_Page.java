@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sd.certify.R;
 import com.sd.certify.admin.fragments.Admin_Home_fragment;
 import com.sd.certify.admin.fragments.Admin_Search_fragment;
+import com.sd.certify.admin.fragments.Profile_fragment;
 
 public class Admin_Home_Page extends AppCompatActivity {
 
@@ -30,6 +31,10 @@ public class Admin_Home_Page extends AppCompatActivity {
             else if (item_id == R.id.search_files)
             {
                 loadFragment(new Admin_Search_fragment(),false);
+            }
+            else if(item_id == R.id.profile)
+            {
+                loadFragment(new Profile_fragment(),false);
             }
             return true;
         });
