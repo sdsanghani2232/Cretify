@@ -82,6 +82,7 @@ public class Html_Admin_Rv_Adapter extends RecyclerView.Adapter<Html_Admin_Rv_Ad
             webView = itemView.findViewById(R.id.html_code_view);
             webSettings = webView.getSettings();
             use = itemView.findViewById(R.id.Use_file);
+
         }
     }
 }

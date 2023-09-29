@@ -14,7 +14,7 @@
         android:layout_height="288dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:contentDescription="@string/splash_img"
+        android:contentDescription=""
         android:src="@drawable/splash_screen" />
 
     <ProgressBar
@@ -22,7 +22,7 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_gravity="center"
        />
 

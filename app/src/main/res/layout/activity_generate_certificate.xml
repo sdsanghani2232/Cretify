@@ -23,7 +23,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginHorizontal="40dp"
         android:id="@+id/evName"
-        android:hint="@string/event_name"
+        android:hint="@string/enter_event_name"
         android:inputType="textAutoComplete"
         />
 

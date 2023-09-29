@@ -18,10 +18,13 @@
         android:theme="@style/Theme.Certify"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".user.activitys.Details_Event"
+            android:exported="false" />
+        <activity
             android:name=".admin.activitys.Generate_Certificate"
             android:exported="false" />
         <activity
-            android:name=".user.User_Home_page"
+            android:name=".user.activitys.User_Home_page"
             android:exported="false" />
         <activity
             android:name=".admin.activitys.Admin_Home_Page"

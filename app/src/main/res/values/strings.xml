@@ -1,19 +1,23 @@
 <resources>
     <string name="app_name">Certify</string>
-    <string name="splash_img">Splash Screen Img</string>
-    <string name="sign_in">Sign in with Google</string>
     <string name="default_web_client_id">default_web_client_id</string>
+    <string name="enter_event_name">Enter Event Name</string>
+    <string name="check">Check</string>
+    <string name="excel">Excel</string>
+    <string name="csv">Csv</string>
+    <string name="name">Name</string>
+    <string name="add_data_file">Add Data File</string>
+    <string name="pdf">PDF</string>
+    <string name="select_img">Select Img</string>
+    <string name="date">Date</string>
+    <string name="submit">Submit</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="use">Use</string>
+    <string name="event_name">Event Name</string>
+    <string name="splash_img">Splash Img</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="add_data_file">Add Data file</string>
-    <string name="information">Information</string>
-    <string name="excel">EXCEL</string>
-    <string name="csv">CSV</string>
-    <string name="use">USE</string>
-    <string name="event_name">Enter Event Name</string>
-    <string name="check">Check</string>
-    <string name="pdf">PDF</string>
-    <string name="name">Name</string>
+    <string name="event">Event</string>
+    <string name="profile">Profile</string>
+    <string name="notification">Notification</string>
 </resources>

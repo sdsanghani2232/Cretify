@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp">
+    android:layout_margin="10dp">
 
 
     <ImageView
@@ -14,19 +14,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#80000000"
-        android:id="@+id/view_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/pdf_view"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:id="@+id/pdf_name"
+        android:layout_marginStart="20dp"
         app:layout_constraintStart_toEndOf="@+id/pdf_view"
         android:text="@string/name"
         android:textSize="30sp"
@@ -34,14 +27,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:ellipsize="end"
-        android:lines="1"/>
+        android:maxLines="1"/>
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:src="@drawable/baseline_download_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/view_bar"
-        app:layout_constraintTop_toTopOf="@+id/view_bar"
+        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/Pdf_download"/>
 
     <ImageButton
@@ -50,8 +43,8 @@
         android:src="@drawable/baseline_send_24"
         app:layout_constraintEnd_toStartOf="@+id/Pdf_download"
         android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view_bar"
-        app:layout_constraintTop_toTopOf="@+id/view_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
         android:id="@+id/Pdf_send"/>
 
 

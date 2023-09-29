@@ -1,4 +1,4 @@
-package com.sd.certify.user;
+package com.sd.certify.user.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.sd.certify.R;
 
-public class User_Home_page extends AppCompatActivity {
+public class Details_Event extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uer_home_page);
+        setContentView(R.layout.activity_details_event);
     }
 }

@@ -23,7 +23,7 @@ import com.sd.certify.rv_adapters.Html_Admin_Rv_Adapter;
 public class Admin_Home_fragment extends Fragment {
 
     private final static int HTML_REQUEST_CODE = 100;
-    private FloatingActionButton info, addCode;
+    private FloatingActionButton addCode;
     private RecyclerView rv;
     private Html_Data model;
     public Admin_Home_fragment() {
@@ -40,7 +40,6 @@ public class Admin_Home_fragment extends Fragment {
                              Bundle savedInstanceState) {
         View infateview = inflater.inflate(R.layout.fragment_admin__home_fragment, container, false);
 
-        info = infateview.findViewById(R.id.info_page);
         addCode = infateview.findViewById(R.id.add_files);
         rv = infateview.findViewById(R.id.html_review);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -31,7 +31,7 @@ public class Excel_Pdf_Upload {
     StorageReference reference;
 
     public void uploadPdf(byte[] pdfBytes, String pdfname, String eventName, String userEmil, OnPdfUploadListener listener) {
-        reference = storage.getReference().child("events/" + eventName + "/" + pdfname);
+        reference = storage.getReference().child("events_pdf/" + eventName + "/" + pdfname);
         reference.putBytes(pdfBytes).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -42,7 +42,7 @@ public class Excel_Pdf_Upload {
                         pdfUrl.put("Email", userEmil);
                         pdfUrl.put("url", uri.toString());
 
-                        DocumentReference eventDocRef = db.collection("Events").document(eventName);
+                        DocumentReference eventDocRef = db.collection("Events_Pdf").document(eventName);
                         eventDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -69,18 +69,22 @@ public class Excel_Pdf_Upload {
 
     private void createNewCertificate(String eventName, Map<String, Object> pdfUrl, OnPdfUploadListener listener) {
 
-        db.collection("Events").document(eventName)
-                .set(pdfUrl)
+        Map<String, Object> data = new HashMap<>();
+        data.put("certificate", new ArrayList<Map<String, Object>>());
+
+        db.collection("Events_Pdf").document(eventName)
+                .set(data)
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         listener.onUploadSuccess();
+                        updateCertificate(eventName,pdfUrl,listener);
                     }
                 });
     }
 
     private void updateCertificate(String eventName, Map<String, Object> pdfUrl, OnPdfUploadListener listener) {
-        DocumentReference eventDocRef = db.collection("Events").document(eventName);
+        DocumentReference eventDocRef = db.collection("Events_pdf").document(eventName);
 
         eventDocRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -108,7 +112,7 @@ public class Excel_Pdf_Upload {
 
     public void uploadExcel(byte[] excel, String newExcel, String eventName, Context context)
     {
-        reference = storage.getReference().child("events/"+eventName + "/"+newExcel);
+        reference = storage.getReference().child("events_pdf/"+eventName + "/"+newExcel);
         reference.putBytes(excel).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

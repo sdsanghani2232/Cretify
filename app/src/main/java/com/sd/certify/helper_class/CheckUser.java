@@ -15,7 +15,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sd.certify.admin.activitys.Admin_Home_Page;
-import com.sd.certify.user.User_Home_page;
+import com.sd.certify.user.activitys.User_Home_page;
 
 import java.util.HashMap;
 
