@@ -74,11 +74,10 @@ public class Excel_Pdf_Upload {
 
         db.collection("Events_Pdf").document(eventName)
                 .set(data)
-                .addOnFailureListener(new OnFailureListener() {
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
+                    public void onSuccess(Void unused) {
                         listener.onUploadSuccess();
-                        updateCertificate(eventName,pdfUrl,listener);
                     }
                 });
     }
@@ -97,7 +96,6 @@ public class Excel_Pdf_Upload {
 
                 certificates.add(pdfUrl);
 
-                // Update the "certificate" array
                 eventDocRef.update("certificate", certificates)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
